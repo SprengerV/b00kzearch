@@ -4,8 +4,12 @@ const routes = require('./routes');
 
 const PORT = process.env.PORT || 3001;
 const app = express();
+
+// environment setup
 require('dotenv').config()
-require('dotenv').config({ path: `.env.${process.env.NODE_ENV}` });
+process.env.NODE_ENV
+  ? require('dotenv').config({ path: `.env.${process.env.NODE_ENV}` })
+  : require('dotenv').config();
 
 app.use([
     express.urlencoded({ extended: true }),
