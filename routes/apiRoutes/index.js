@@ -2,7 +2,7 @@ const router = require('express').Router();
 const axios = require('axios');
 
 // environment setup
-require('dotenv').config()
+require('dotenv').config();
 process.env.NODE_ENV
   ? require('dotenv').config({ path: `.env.${process.env.NODE_ENV}` })
   : require('dotenv').config();
@@ -27,7 +27,6 @@ router.get('/search/:query', (req, res) => {
           };
           return obj;
         });
-        console.log(resArr)
         res.status(200).json(resArr);
       };
       ans.status === 200
