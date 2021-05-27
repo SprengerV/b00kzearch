@@ -9,8 +9,8 @@ const SearchForm = (props) => {
         <Card id="searchBox" className="w-100">
           <Container>
             <Col xs="12" md="8" lg="6" xl="5" className="ms-auto me-auto">
-              <Form id="searchForm" className="d-flex w-100" onSubmit={props.search}>
-                <Form.Control type="text" placeholder="Enter search terms here" />
+              <Form id="searchForm" className="d-flex w-100" onSubmit={ props.search }>
+                <Form.Control id="search" type="text" placeholder="Enter search terms here" />
                 <Button id="searchBtn" variant="outline-info" type="submit">
                   &#9885;
                 </Button>
