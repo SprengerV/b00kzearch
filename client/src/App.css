@@ -1,13 +1,3 @@
 .App {
   text-align: center;
 }
-#searchBox {
-  margin-top: 4vh;
-
-}
-#searchBtn {
-  transform: rotate(-180deg);
-}
-#searchForm {
-  margin: 3vh 0 3vh 0;
-}
