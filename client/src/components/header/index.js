@@ -9,7 +9,8 @@ const Header = (props) => {
       <Col xs="11" className="ms-auto me-auto">
         <Card id="headerBox" className="w-100">
           <Container id="header" className="d-flex flex-column justify-content-center">
-            { props.location.pathname === '/search' && <h2>Search your favorite titles</h2> }
+            { props.location.pathname === '/' && <h2>Welcome to b00zearch</h2> }
+            { props.location.pathname === '/search' && <h2>Search your favorite books</h2> }
             { props.location.pathname === '/saved' && <h2>Your saved books</h2> }
             <p>Powered by Google Books API</p>
           </Container>

@@ -1,16 +1,14 @@
 import React, { useState } from 'react';
 import SearchForm from '../components/searchForm';
 import NoBooks from '../components/noBooks';
-import Book from '../component/book';
+import Book from '../components/book';
 
 const Search = () => {
-  const [result, setResult] = useState(null)
+  const [result, setResult] = useState(null);
 
   return (<>
     <SearchForm/>
-    { result 
-      ? <NoBooks/>
-      : <Book data={ result }/> }
+    { result ? <Book data={result}/> : <NoBooks/> }
   </>);
 };
 
