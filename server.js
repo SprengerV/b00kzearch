@@ -12,9 +12,9 @@ process.env.NODE_ENV
   : require('dotenv').config();
 
 app.use([
-    express.urlencoded({ extended: true }),
-    express.json(),
-    routes
+  express.urlencoded({ extended: true }),
+  express.json(),
+  routes
 ]);
 
 if (process.env.NODE_ENV === 'production') {
