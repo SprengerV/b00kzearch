@@ -1,9 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
+import NoBooks from '../components/noBooks';
 
 const Saved = () => {
-  return (
-    <div>saved</div>
-  );
+  const [books, setBooks] = useState([]);
+
+  return (<>
+    { !books.length && <NoBooks/> }
+  </>);
 };
 
 export default Saved
