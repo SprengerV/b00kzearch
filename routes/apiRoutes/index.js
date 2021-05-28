@@ -9,29 +9,36 @@ process.env.NODE_ENV
 
 router.get('/search/:query', (req, res) => {
   axios
-    .get(`https://www.googleapis.com/books/v1/volumes?q=${req.params.query}&key=${process.env.GBOOKS_API_KEY}`)
+    .get(`https://www.googleapis.com/books/v1/volumes?q=${ req.params.query }&key=${ process.env.GBOOKS_API_KEY }`)
     .then(ans => {
       const handleData = (arr, res) => {
         const resArr = arr.map(({ volumeInfo }) => {
           return volumeInfo;
         })
+        .filter(({ title, authors, description,
+          imageLinks, infoLink }) => {
+            return (title && authors && description && imageLinks && infoLink);
+          })
         .map(({
           title, authors, description,
           imageLinks, infoLink 
         }) => {
-          const { thumbnail } = imageLinks;
+          const { smallThumbnail } = imageLinks;
           const obj = {
             title, authors, description,
-            image: thumbnail,
+            image: smallThumbnail,
             link: infoLink
           };
           return obj;
         });
-        res.status(200).json(resArr);
+        console.log(resArr)
+        res.status(200).json(JSON.stringify(resArr));
+        return;
       };
       ans.status === 200
         ? handleData(ans.data.items, res)
         : res.status(ans.status).json(ans.statusText);
+      return;
     })
     .catch(err => {
       res.status(500).json(err);

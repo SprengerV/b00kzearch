@@ -13,14 +13,14 @@ const Search = () => {
     const query = document.querySelector('#search').value;
     searchBook(query)
       .then(res => {
-        console.log(res)
-        setResults(res.data)
+        setResults(JSON.parse(res.data));
       });
   };
 
   return (<>
     <SearchForm search={ search }/>
-    { results.length ? <Book data={results}/> : <NoBooks/> }
+    { (results.length === 0) && <NoBooks/> }
+    { (results.length > 0) && results.map(book => <Book data={ book }/>) } 
   </>);
 };
 
