@@ -7,9 +7,7 @@ const PORT = process.env.PORT || 3001;
 const app = express();
 
 // environment setup
-process.env.NODE_ENV 
-  ? require('dotenv').config({ path: `.env.${process.env.NODE_ENV}` })
-  : require('dotenv').config();
+if (process.env.NODE_ENV === 'development.local') require('dotenv').config({ path: '.env.development.local' }); 
 
 app.use([
   express.urlencoded({ extended: true }),
