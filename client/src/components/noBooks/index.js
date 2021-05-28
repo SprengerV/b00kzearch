@@ -7,7 +7,7 @@ const NoBooks = (props) => {
   return (
     <Row>
       <Col xs="8" id="noBooks" className="ms-auto me-auto d-flex justify-content-center align-items-center">
-        { (props.location.pathname === '/search' || props.location.pathname === '/') && <span>Search for a book and the result will display here.</span> }
+        { (props.location.pathname === '/search' || props.location.pathname === '/') && <span>Search for a book and the results will display here.</span> }
         { props.location.pathname === '/saved' && <span>You haven't added any books yet!</span> }
       </Col>
     </Row>

@@ -93,7 +93,7 @@ const Book = (props) => {
                 </Container>
               </Col>
             </Row>
-            <Button onClick={ addHandler } variant="info" className="addBook">&#10011;</Button>
+            { book._id ? <Button onClick={ addHandler } data-id={ book._id } variant="outline-info" className="addBook">&#9866;</Button> : <Button onClick={ addHandler } variant="info" className="addBook">&#10011;</Button> }
           </Container>
         </Card>
       </Col>

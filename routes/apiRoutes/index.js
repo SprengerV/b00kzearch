@@ -47,7 +47,10 @@ router.get('/search/:query', (req, res) => {
 });
 
 router.get('/books', (req, res) => {
-  // res.json all saved books
+  Book
+    .find()
+    .then(docs => res.status(200).json(docs))
+    .catch(err => res.status(400).json(err));
 });
 
 router.post('/books', (req, res) => {
