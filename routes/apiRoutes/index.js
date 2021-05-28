@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const axios = require('axios');
+const { Book } = require('../../models');
 
 // environment setup
 require('dotenv').config();
@@ -31,7 +32,6 @@ router.get('/search/:query', (req, res) => {
           };
           return obj;
         });
-        console.log(resArr)
         res.status(200).json(JSON.stringify(resArr));
         return;
       };
@@ -51,11 +51,21 @@ router.get('/books', (req, res) => {
 });
 
 router.post('/books', (req, res) => {
-  // save a new book to db
+  Book
+    .create(req.body)
+    .then(doc => {
+      console.log(doc)
+      res.status(200).json(doc)
+    })
+    .catch(err => res.status(400).json(err));
 });
 
 router.delete('/books/:id', (req, res) => {
-  // delete book from db by id
+  Book
+    .findById({ _id: req.params.id })
+    .then(doc => doc.remove())
+    .then(doc => res.status(200).json(doc))
+    .catch(err => res.status(400).json(err));
 });
 
 module.exports = router;

@@ -32,14 +32,17 @@ const Book = (props) => {
     const func = {
       '✛': ({ target }) => {
         saveBook(book)
-          .then(res => {
-            setBook(res.data);
-            target.setAttribute('class', 'btn-outline-info addBook')
+          .then(({ data }) => {
+            const { _id } = data;
+            console.log( _id )
+            target.setAttribute('data-id', _id);
+            target.setAttribute('class', 'btn-outline-info addBook');
             target.innerHTML = '&#9866;';
           });
       },
       '⚊': ({ target }) => {
-        delBook(book.id)
+        console.log(target.getAttribute('data-id'))
+        delBook(target.getAttribute('data-id'))
           .then(res => {
             target.setAttribute('class', 'btn-info addBook')
             target.innerHTML = '&#10011;';

@@ -5,9 +5,7 @@ const API = {
     return axios.get(`api/search/${query}`)
   },
   saveBook: (bookObj) => {
-    return axios.post('/api/books', {
-      body: JSON.stringify(bookObj)
-    })
+    return axios.post('/api/books', bookObj);
   },
   getBooks: () => {
     return axios.get('/api/books');
