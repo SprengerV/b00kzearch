@@ -1,13 +1,13 @@
 const express = require('express');
 const mongoose = require('mongoose')
 const routes = require('./routes');
+require('dotenv').config()
 
 const PORT = process.env.PORT || 3001;
 const app = express();
 
 // environment setup
-require('dotenv').config()
-process.env.NODE_ENV
+process.env.NODE_ENV 
   ? require('dotenv').config({ path: `.env.${process.env.NODE_ENV}` })
   : require('dotenv').config();
 
