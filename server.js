@@ -13,13 +13,13 @@ const app = express();
 
 app.use([
   express.urlencoded({ extended: true }),
-  express.json(),
-  routes
+  express.json()
 ]);
 
 if (process.env.NODE_ENV === 'production') {
-  app.use(express.static(__dirname, 'client/build'));
+  app.use(express.static('client/build'));
 }
+app.use(routes);
 
 mongoose.connect(process.env.MONGODB_URI, {
   useNewUrlParser: true,
