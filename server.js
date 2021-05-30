@@ -7,7 +7,9 @@ const PORT = process.env.PORT || 3001;
 const app = express();
 
 // environment setup
-if (process.env.NODE_ENV === 'development.local') require('dotenv').config({ path: '.env.development.local' }); 
+(process.env.NODE_ENV === 'development.local') && require('dotenv').config({ path: '.env.development.local'}),
+
+
 
 app.use([
   express.urlencoded({ extended: true }),
@@ -16,7 +18,7 @@ app.use([
 ]);
 
 if (process.env.NODE_ENV === 'production') {
-  app.use(express.static('client/build'));
+  app.use(express.static('./client/build'));
 }
 
 mongoose.connect(process.env.MONGODB_URI, {
